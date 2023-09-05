@@ -21,6 +21,7 @@ If you dont have cookie-cutter, install it from [here](https://cookiecutter.read
 .
 └── YourProject
     ├── CAD                                 # CAD Files, 3D objects (cases, brackets, big things)
+    ├── Docs                                # Documentation (setup by default with Sphinx)
     ├── Firmware                            # Firmware (setup by default with PIO)
     │   ├── include                         # Include files like pindefs and headers
     │   ├── lib                             # Custom lib files like project objects and memory
