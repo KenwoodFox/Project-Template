@@ -22,7 +22,7 @@ build:	## Invokes pio run
 # For CI
 binaries:	## Builds the binaries
 	pio run
-	pio run -t .pio/build/megaatmega2560/firmware.eep
+	pio run -t .pio/build/uno328/firmware.hex
 
 flash:	## Flashes the code to the processor
 	pio run -t upload
