@@ -9,7 +9,7 @@ it so everyone else can use it too!
 Its as easy as
 
 ```shell
-$ cookiecutter https://github.com/KenwoodFox/Project-Template
+cookiecutter https://github.com/KenwoodFox/Project-Template
 ```
 
 If you dont have cookie-cutter, install it from [here](https://cookiecutter.readthedocs.io/en/stable/installation.html)!
