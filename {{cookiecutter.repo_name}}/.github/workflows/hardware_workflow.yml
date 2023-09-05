@@ -1,4 +1,4 @@
-name: Display Hardware
+name: Hardware
 
 on:
   push:
