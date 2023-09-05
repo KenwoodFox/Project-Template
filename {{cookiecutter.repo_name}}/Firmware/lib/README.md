@@ -1,0 +1,1 @@
+PIO stores lib data in here, you can create lib folders with objects inside.
