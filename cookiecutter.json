@@ -2,5 +2,11 @@
   "repo_name": "MyProject",
   "github": "KenwoodFox",
   "Author": "Joe",
-  "Institute": "Kitsune Scientific"
+  "Institute": "Kitsune Scientific",
+  "__prompts__": {
+    "repo_name": "CamelCase, repository name.",
+    "github": "Your GitHub Username",
+    "Author": "Your name",
+    "Institute": "Institute or class, like 'My Club' or 'CS-113'"
+  }
 }
