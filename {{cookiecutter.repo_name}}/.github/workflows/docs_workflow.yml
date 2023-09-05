@@ -29,18 +29,18 @@ jobs:
     - run: sudo apt update && sudo apt install texlive-latex-recommended texlive-latex-extra texlive-pictures pandoc rename latexmk
 
     - name: Install docs requirements
-      run: pip install -r docs/requirements.txt
+      run: pip install -r Docs/requirements.txt
 
     - name: Build pdf
-      run: cd docs && make
+      run: cd Docs && make
 
       #{% endraw %}
-    - run: mv docs/_build/latex/*.pdf docs/_build/latex/{{cookiecutter.repo_name}}.pdf
+    - run: mv Docs/_build/latex/*.pdf Docs/_build/latex/{{cookiecutter.repo_name}}.pdf
 
     - uses: actions/upload-artifact@v2
       with:
         name: Uniform_and_Style_Guide
-        path: docs/_build/latex/{{cookiecutter.repo_name}}.pdf
+        path: Docs/_build/latex/{{cookiecutter.repo_name}}.pdf
         #{% raw %}
 
 

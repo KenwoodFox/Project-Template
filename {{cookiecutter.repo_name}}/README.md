@@ -1,10 +1,11 @@
-[![Display Hardware](https://github.com/{{cookiecutter.github}}/{{cookiecutter.repo_name}}/actions/workflows/hardware_workflow.yml/badge.svg)](https://github.com/{{cookiecutter.github}}/{{cookiecutter.repo_name}}/actions/workflows/hardware_workflow.yml)
-[![Firmware Workflow](https://github.com/{{cookiecutter.github}}/{{cookiecutter.repo_name}}/actions/workflows/firmware_workflow.yml/badge.svg)](https://github.com/{{cookiecutter.github}}/{{cookiecutter.repo_name}}/actions/workflows/firmware_workflow.yml)
+[![Docs](https://github.com/{{cookiecutter.github}}/{{cookiecutter.repo_name}}/actions/workflows/docs_workflow.yml/badge.svg)](https://github.com/{{cookiecutter.github}}/{{cookiecutter.repo_name}}/actions/workflows/firmware_workflow.yml)
+[![Hardware](https://github.com/{{cookiecutter.github}}/{{cookiecutter.repo_name}}/actions/workflows/hardware_workflow.yml/badge.svg)](https://github.com/{{cookiecutter.github}}/{{cookiecutter.repo_name}}/actions/workflows/hardware_workflow.yml)
+[![Firmware](https://github.com/{{cookiecutter.github}}/{{cookiecutter.repo_name}}/actions/workflows/firmware_workflow.yml/badge.svg)](https://github.com/{{cookiecutter.github}}/{{cookiecutter.repo_name}}/actions/workflows/firmware_workflow.yml)
 
 
 # {{cookiecutter.repo_name}}
 
-![Banner](Static/banner.png)
+![Banner](Static/Banner.png)
 
 This repo contains all the firmware and hardware for the {{cookiecutter.repo_name}}.
 
