@@ -31,3 +31,8 @@ command to initialize them before opening the main sch
 ```shell
 git submodule update --init --recursive
 ```
+
+
+## Project Layout
+
+If you want to use this project template for yourself, you can find it [here!](https://github.com/KenwoodFox/Project-Template)
