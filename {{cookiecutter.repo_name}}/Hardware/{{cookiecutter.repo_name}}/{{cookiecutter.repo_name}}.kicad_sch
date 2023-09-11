@@ -1,5 +1,20 @@
 (kicad_sch (version 20230121) (generator eeschema)
+
+  (uuid 894f620e-3404-4a40-a2a7-513bc1d5f99b)
+
   (paper "A4")
-  (lib_symbols)
-  (symbol_instances)
+
+  (title_block
+    (title "{{cookiecutter.repo_name}}")
+    (rev "${REVISION}")
+    (company "{{cookiecutter.Institute}}")
+  )
+
+  (lib_symbols
+  )
+
+
+  (sheet_instances
+    (path "/" (page "1"))
+  )
 )
