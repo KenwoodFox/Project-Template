@@ -3,7 +3,7 @@
 [![Firmware](https://github.com/{{cookiecutter.github}}/{{cookiecutter.repo_name}}/actions/workflows/firmware_workflow.yml/badge.svg)](https://github.com/{{cookiecutter.github}}/{{cookiecutter.repo_name}}/actions/workflows/firmware_workflow.yml)
 
 
-# {{cookiecutter.repo_name}}
+# {{cookiecutter.repo_neme}}
 
 ![Banner](Static/Banner.png)
 
