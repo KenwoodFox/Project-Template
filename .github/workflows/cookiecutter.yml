@@ -1,0 +1,24 @@
+name: Cookiecutter Test
+
+on:
+  push:
+    branches:
+      - "main"
+    tags:
+      - "*"
+  pull_request:
+
+jobs:
+  TestCookie:
+    runs-on: ubuntu-latest
+    name: Test Cookiecutter Templating
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          submodules: true
+
+      - run: python3 -m pip install --user cookiecutter
+
+      - run: cookiecutter . --no-input

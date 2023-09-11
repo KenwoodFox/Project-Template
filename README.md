@@ -1,3 +1,5 @@
+[![Cookiecutter Test](https://github.com/KenwoodFox/Project-Template/actions/workflows/cookiecutter.yml/badge.svg)](https://github.com/KenwoodFox/Project-Template/actions/workflows/cookiecutter.yml)
+
 # KenwoodFox's Cookie Cutter Project Template
 
 I very often find myself using or suggesting this project layout, so I've gone ahead and cookie-cuttered
