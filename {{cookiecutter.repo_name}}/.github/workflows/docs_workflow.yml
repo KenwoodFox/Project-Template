@@ -65,6 +65,7 @@ jobs:
           file: "*.pdf"
           tag: ${{ github.ref }}
           overwrite: true
+          prerelease: true
           #{% endraw %}
           body: "{{cookiecutter.Institute}}, Automated with github ci/cd."
           file_glob: true
