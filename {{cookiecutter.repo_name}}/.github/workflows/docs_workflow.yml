@@ -1,5 +1,8 @@
 name: Docs
 
+permissions:
+  contents: write
+
 on:
   push:
     branches:
@@ -16,33 +19,32 @@ jobs:
     runs-on: ubuntu-latest
     name: Build Docs
     steps:
-    - name: Setup Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.10'
-        architecture: x64
-    
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.10"
+          architecture: x64
 
-    - run: sudo apt update && sudo apt install texlive-latex-recommended texlive-latex-extra texlive-pictures pandoc rename latexmk
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
-    - name: Install docs requirements
-      run: pip install -r Docs/requirements.txt
+      - run: sudo apt update && sudo apt install texlive-latex-recommended texlive-latex-extra texlive-pictures pandoc rename latexmk
 
-    - name: Build pdf
-      run: cd Docs && make
+      - name: Install docs requirements
+        run: pip install -r Docs/requirements.txt
 
-      #{% endraw %}
-    - run: mv Docs/_build/latex/*.pdf Docs/_build/latex/{{cookiecutter.repo_name}}.pdf
+      - name: Build pdf
+        run: cd Docs && make
 
-    - uses: actions/upload-artifact@v2
-      with:
-        name: Uniform_and_Style_Guide
-        path: Docs/_build/latex/{{cookiecutter.repo_name}}.pdf
-        #{% raw %}
+        #{% endraw %}
+      - run: mv Docs/_build/latex/*.pdf Docs/_build/latex/{{cookiecutter.repo_name}}.pdf
 
+      - uses: actions/upload-artifact@v2
+        with:
+          name: Uniform_and_Style_Guide
+          path: Docs/_build/latex/{{cookiecutter.repo_name}}.pdf
+          #{% raw %}
 
   publish_docs:
     # Only run on tags
@@ -52,17 +54,17 @@ jobs:
     needs: [make_docs]
 
     steps:
-    - uses: actions/download-artifact@v2
-      with:
-        name: Uniform_and_Style_Guide
+      - uses: actions/download-artifact@v2
+        with:
+          name: Uniform_and_Style_Guide
 
-    - name: Upload Docs to release
-      uses: svenstaro/upload-release-action@v2
-      with:
-        repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: '*.pdf'
-        tag: ${{ github.ref }}
-        overwrite: true
-        #{% endraw %}
-        body: "{{cookiecutter.Institute}}, Automated with github ci/cd."
-        file_glob: true
+      - name: Upload Docs to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: "*.pdf"
+          tag: ${{ github.ref }}
+          overwrite: true
+          #{% endraw %}
+          body: "{{cookiecutter.Institute}}, Automated with github ci/cd."
+          file_glob: true
