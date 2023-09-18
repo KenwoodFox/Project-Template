@@ -18,7 +18,6 @@ First, clone this repo (and optionally checkout a branch)
 ```shell
 git clone https://github.com/{{cookiecutter.github}}/{{cookiecutter.repo_name}}.git
 cd {{cookiecutter.repo_name}}
-git checkout new_board
 ```
 
 # Init Submodules
