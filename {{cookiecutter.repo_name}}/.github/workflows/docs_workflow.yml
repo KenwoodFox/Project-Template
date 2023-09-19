@@ -12,6 +12,7 @@ on:
   pull_request:
     paths:
       - "Docs/**"
+      - ".github/workflows/**"
 
 #{% raw %}
 jobs:

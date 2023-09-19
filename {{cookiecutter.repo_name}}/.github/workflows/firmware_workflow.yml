@@ -9,6 +9,7 @@ on:
   pull_request:
     paths:
       - "Firmware/**"
+      - ".github/workflows/**"
 
 #{% raw %}
 jobs:
