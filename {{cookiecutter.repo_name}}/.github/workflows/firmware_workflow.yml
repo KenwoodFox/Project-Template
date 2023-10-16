@@ -39,7 +39,7 @@ jobs:
           pip install --upgrade platformio
 
       - name: Run PlatformIO
-        run: cd Firmware && make
+        run: cd Firmware && make build
 
       - uses: actions/upload-artifact@v2
         with:
