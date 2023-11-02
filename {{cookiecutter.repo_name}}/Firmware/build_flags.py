@@ -21,9 +21,13 @@ try:
         .strip()
         .decode("utf-8")
     )
+
+    print(f"-D REVISION='\"{revision}\"'")
 except Exception as e:
-    logging.warning(f"Error fetching revision! {e}")
-    revision = "UnknownRevision"
+    logging.warning("Getting git revision failed!! Check that you have git installed?")
+    logging.warning(e)
+
+    print("-D REVISION='Unknown'")
 
 try:
     host = (
@@ -35,9 +39,13 @@ try:
         .strip()
         .decode("utf-8")
     )
+
+    print(f"-D FWHOST='\"{host}\"'")
 except Exception as e:
-    logging.warning(f"Error fetching build host! {e}")
-    revision = "UnknownHost"
+    logging.warning("Getting host failed!! Are you using a UNIX compatible system?")
+    logging.warning(e)
+
+    print("-D FWHOST='Unknown'")
 
 try:
     username = (
@@ -51,20 +59,18 @@ try:
         .strip()
         .decode("utf-8")
     )
+
+    # Cleanup CI
+    if username == "root":
+        username = "git"
+        host = "git"
+
+    print(f"-D USERNAME='\"{username}\"'")
 except Exception as e:
-    logging.warning(f"Error fetching build user! {e}")
-    username = "UnknownUser"
+    logging.warning("Getting host failed!! Are you using a UNIX compatible system?")
+    logging.warning(e)
 
-# Cleanup CI
-if username == "root":
-    username = "github"
-    host = "github"
+    print("-D USERNAME='Unknown'")
 
-# # Colors!
-# revision = revision.replace("dirty", "\x1B[31mdirty\x1B[0m")
-# host = "\x1B[34m" + host + "\x1B[0m"
-# username = "\x1B[34m" + username + "\x1B[0m"
-
-print(f"-DREVISION='\"{revision}\"'")
-print(f"-DHOST='\"{host}\"'")
-print(f"-DUSER='\"{username}\"'")
+# Print to enable debugging
+# print("-D DEBUG")
