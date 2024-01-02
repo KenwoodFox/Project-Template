@@ -24,8 +24,8 @@ except subprocess.CalledProcessError:
 
 # Project Information
 project = "{{cookiecutter.repo_name}}"
-copyright = "2023, {{cookiecutter.Author}}"
-author = "{{cookiecutter.Author}}"
+copyright = "2023, {{cookiecutter.author}}"
+author = "{{cookiecutter.author}}"
 
 
 # General Config
