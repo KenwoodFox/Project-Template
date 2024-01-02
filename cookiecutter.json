@@ -1,12 +1,13 @@
 {
   "repo_name": "MyProject",
-  "github": "KenwoodFox",
-  "Author": "Joe",
-  "Institute": "Kitsune Scientific",
+  "username": "KenwoodFox",
+  "author": "Joe",
+  "institute": "Kitsune Scientific",
+  "gitprovider": ["github", "gitea"],
   "__prompts__": {
     "repo_name": "CamelCase, repository name.",
-    "github": "Your GitHub Username",
-    "Author": "Your name",
-    "Institute": "Institute or class, like 'My Club' or 'CS-113'"
+    "username": "Your username",
+    "author": "Your name",
+    "institute": "Institute or class, like 'My Club' or 'CS-113'"
   }
 }
