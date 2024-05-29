@@ -43,7 +43,7 @@ jobs:
 
       - uses: actions/upload-artifact@v2
         with:
-          name: Uniform_and_Style_Guide
+          name: ProjectDocs
           path: Docs/_build/latex/{{cookiecutter.repo_name}}.pdf
           #{% raw %}
 
@@ -57,7 +57,7 @@ jobs:
     steps:
       - uses: actions/download-artifact@v2
         with:
-          name: Uniform_and_Style_Guide
+          name: ProjectDocs
 
       - name: Upload Docs to release
         uses: svenstaro/upload-release-action@v2
