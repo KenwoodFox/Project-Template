@@ -3,9 +3,10 @@ kibot:
 # Look into pcb_replace, looks sick! Also sch_replace
 
 preflight:
-  run_erc: true
+  erc: true
+  run_drc:
+    ignore_unconnected: true
   update_xml: true
-  run_drc: false
   check_zone_fills: false
   ignore_unconnected: false
 
