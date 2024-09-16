@@ -1,6 +1,6 @@
-[![Docs](https://github.com/{{cookiecutter.github}}/{{cookiecutter.repo_name}}/actions/workflows/docs_workflow.yml/badge.svg)](https://github.com/{{cookiecutter.github}}/{{cookiecutter.repo_name}}/actions/workflows/docs_workflow.yml)
-[![Hardware](https://github.com/{{cookiecutter.github}}/{{cookiecutter.repo_name}}/actions/workflows/hardware_workflow.yml/badge.svg)](https://github.com/{{cookiecutter.github}}/{{cookiecutter.repo_name}}/actions/workflows/hardware_workflow.yml)
-[![Firmware](https://github.com/{{cookiecutter.github}}/{{cookiecutter.repo_name}}/actions/workflows/firmware_workflow.yml/badge.svg)](https://github.com/{{cookiecutter.github}}/{{cookiecutter.repo_name}}/actions/workflows/firmware_workflow.yml)
+[![Docs](https://{{cookiecutter.gitprovider}}.com/{{cookiecutter.username}}/{{cookiecutter.repo_name}}/actions/workflows/docs_workflow.yml/badge.svg)](https://{{cookiecutter.gitprovider}}.com/{{cookiecutter.username}}/{{cookiecutter.repo_name}}/actions/workflows/docs_workflow.yml)
+[![Hardware](https://{{cookiecutter.gitprovider}}.com/{{cookiecutter.username}}/{{cookiecutter.repo_name}}/actions/workflows/hardware_workflow.yml/badge.svg)](https://{{cookiecutter.gitprovider}}.com/{{cookiecutter.username}}/{{cookiecutter.repo_name}}/actions/workflows/hardware_workflow.yml)
+[![Firmware](https://{{cookiecutter.gitprovider}}.com/{{cookiecutter.username}}/{{cookiecutter.repo_name}}/actions/workflows/firmware_workflow.yml/badge.svg)](https://{{cookiecutter.gitprovider}}.com/{{cookiecutter.username}}/{{cookiecutter.repo_name}}/actions/workflows/firmware_workflow.yml)
 
 
 # {{cookiecutter.repo_name}}
@@ -9,14 +9,14 @@
 
 This repo contains all the firmware and hardware for the {{cookiecutter.repo_name}}.
 
-If you're looking for the latest docs/builds, see our [Releases Page](https://github.com/{{cookiecutter.github}}/{{cookiecutter.repo_name}}/releases).
+If you're looking for the latest docs/builds, see our [Releases Page](https://{{cookiecutter.gitprovider}}.com/{{cookiecutter.username}}/{{cookiecutter.repo_name}}/releases).
 
 # Getting Started
 
 First, clone this repo (and optionally checkout a branch)
 
 ```shell
-git clone https://github.com/{{cookiecutter.github}}/{{cookiecutter.repo_name}}.git
+git clone https://{{cookiecutter.gitprovider}}.com/{{cookiecutter.username}}/{{cookiecutter.repo_name}}.git
 cd {{cookiecutter.repo_name}}
 ```
 
@@ -34,4 +34,4 @@ git submodule update --init --recursive
 
 ## Project Layout
 
-If you want to use this project template for yourself, you can find it [here!](https://github.com/KenwoodFox/Project-Template)
+If you want to use this project template for yourself, you can find it [here!](https://{{cookiecutter.gitprovider}}.com/KenwoodFox/Project-Template)
