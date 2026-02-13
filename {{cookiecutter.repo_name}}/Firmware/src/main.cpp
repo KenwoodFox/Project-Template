@@ -1,6 +1,6 @@
 /**
  * @file main.cpp
- * @author {{cookiecutter.Author}}
+ * @author {{cookiecutter.author}}
  * @brief Source code for {{cookiecutter.repo_name}}
  */
 
