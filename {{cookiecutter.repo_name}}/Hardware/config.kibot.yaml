@@ -4,11 +4,9 @@ kibot:
 
 preflight:
   erc: true
-  run_drc:
-    ignore_unconnected: true
+  drc: true
   update_xml: true
   check_zone_fills: false
-  ignore_unconnected: false
 
   # Replace variables
   set_text_variables:
@@ -43,16 +41,17 @@ outputs:
 
   - name: "3D Models"
     comment: "3D Models"
-    type: step
+    type: export_3d
 
   - name: "3D Renders"
     comment: "3D Renders for docs!"
     type: render_3d
     options:
       ray_tracing: true
-      rotate_x: -1
-      rotate_y: 2
-      zoom: 3
+      rotate_z: 1
+      rotate_x: 1
+      rotate_y: 1
+      zoom: -4
       wait_render: 20
       width: 800
 
@@ -203,13 +202,15 @@ outputs:
       exclude_filter: "only_jlc_parts"
       ref_separator: ","
       columns:
-        - field: Value
-          name: Comment
+        - field: "${QUANTITY}"
+          name: Quantity
+        - field: "LCSC#"
+          name: "LCSC Part #"
+        - field: "Description"
+          name: Description
         - field: References
           name: Designator
         - Footprint
-        - field: "LCSC#"
-          name: "LCSC Part #"
       csv:
         hide_pcb_info: true
         hide_stats_info: true
