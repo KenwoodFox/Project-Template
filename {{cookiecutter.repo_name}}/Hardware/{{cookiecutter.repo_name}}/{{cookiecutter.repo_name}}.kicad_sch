@@ -7,7 +7,7 @@
   (title_block
     (title "{{cookiecutter.repo_name}}")
     (rev "${REVISION}")
-    (company "{{cookiecutter.Institute}}")
+    (company "{{cookiecutter.institute}}")
   )
 
   (lib_symbols

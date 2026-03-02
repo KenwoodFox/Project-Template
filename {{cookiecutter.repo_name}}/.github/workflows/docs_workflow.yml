@@ -68,5 +68,5 @@ jobs:
           overwrite: true
           prerelease: true
           #{% endraw %}
-          body: "{{cookiecutter.Institute}}, Automated with github ci/cd."
+          body: "{{cookiecutter.institute}}, Automated with github ci/cd."
           file_glob: true
