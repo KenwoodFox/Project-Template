@@ -1,0 +1,151 @@
+name: Hardware
+
+permissions:
+  contents: write
+  actions: read
+  issues: write
+  pull-requests: write
+
+on:
+  push:
+    branches:
+      - "main"
+    tags:
+      - "*"
+  pull_request:
+    paths:
+      - "Hardware/**"
+      - ".gitea/workflows/**"
+
+#{% raw %}
+jobs:
+  KiCad_Hardware:
+    runs-on: ubuntu-latest
+    name: KiCad Hardware
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: true
+
+      - uses: INTI-CMNB/KiBot@v2_k10
+        with:
+          # Config file
+          config: Hardware/config.kibot.yaml
+          # Prefix for output in config file.
+          dir: _hardwareOutput
+
+          # Hardware Files
+          #{% endraw %}
+          schema: "Hardware/{{cookiecutter.repo_name}}/{{cookiecutter.repo_name}}.kicad_sch"
+          board: "Hardware/{{cookiecutter.repo_name}}/{{cookiecutter.repo_name}}.kicad_pcb"
+          #{% raw %}
+
+      - name: upload results
+        uses: actions/upload-artifact@v3
+        with:
+          name: Board-Hardware
+          path: _hardwareOutput
+
+  dev-publish:
+    # publish only to devs
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    name: Dev-Publish
+    needs: [KiCad_Hardware]
+    permissions:
+      issues: write
+      pull-requests: write
+
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: Board-Hardware
+
+      - name: Post PCB preview on PR
+        env:
+          # Gitea job token (not GITHUB_TOKEN). Override with a PAT secret for fork PRs.
+          GITEA_TOKEN: ${{ secrets.GITEA_TOKEN }}
+          GITEA_URL: ${{ github.server_url }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          if [ -z "${GITEA_TOKEN}" ]; then
+            echo "No GITEA_TOKEN available. Set repository Actions permissions or add GITEA_PR_COMMENT_TOKEN secret."
+            exit 1
+          fi
+
+          IMAGE=$(find . -name '*-3D_top.png' -print -quit)
+          if [ -z "$IMAGE" ]; then
+            echo "No *-3D_top.png render found in artifact"
+            exit 1
+          fi
+
+          API="${GITEA_URL%/}/api/v1/repos/${REPO}"
+
+          api() {
+            local method="$1" url="$2"
+            shift 2
+            local body http_code
+            body=$(mktemp)
+            http_code=$(curl -sS -o "$body" -w '%{http_code}' -X "$method" \
+              -H "Authorization: token ${GITEA_TOKEN}" \
+              "$@" "$url") || { echo "curl failed for $url" >&2; cat "$body" >&2; rm -f "$body"; return 1; }
+            if [ "$http_code" -ge 400 ]; then
+              echo "Gitea API ${method} ${url} failed (${http_code}):" >&2
+              cat "$body" >&2
+              rm -f "$body"
+              return 1
+            fi
+            cat "$body"
+            rm -f "$body"
+          }
+
+          ASSET=$(api POST "${API}/issues/${PR_NUMBER}/assets" \
+            -F "attachment=@${IMAGE};type=image/png") || exit 1
+          URL=$(python3 -c "import json,sys; print(json.load(sys.stdin)['browser_download_url'])" <<< "$ASSET")
+          export ASSET_URL="$URL"
+
+          api POST "${API}/issues/${PR_NUMBER}/comments" \
+            -H "Content-Type: application/json" \
+            -d "$(python3 -c 'import json, os; print(json.dumps({"body": "## PCB preview\n\n![](" + os.environ["ASSET_URL"] + ")"}))')" \
+            || exit 1
+
+  publish:
+    # Only run on tags
+    if: github.event_name == 'push' && contains(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+    name: Publish
+    needs: [KiCad_Hardware]
+
+    steps:
+      # Be in our repo
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/download-artifact@v3
+        with:
+          name: Board-Hardware
+
+      - run: mkdir -p _staging/
+
+      - run: cp *.step _staging/
+
+      # Copy gerbers
+      - run: cp PCBWay/*.zip _staging/Board-$(git rev-parse --short HEAD)-PCBWay.zip
+      - run: cp JLCPCB/*.zip _staging/Board-$(git rev-parse --short HEAD)-JLCPCB.zip
+
+      - name: Upload artifacts to release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITEA_TOKEN }}
+          file: "_staging/*"
+          tag: ${{ github.ref }}
+          overwrite: true
+          prerelease: true
+          #{% endraw %}
+          body: "{{cookiecutter.Institute}}, Automated with Gitea CI/CD."
+          file_glob: true

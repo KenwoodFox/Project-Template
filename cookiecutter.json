@@ -1,11 +1,15 @@
 {
   "repo_name": "MyProject",
-  "github": "KenwoodFox",
+  "vcs_platform": ["github", "gitea"],
+  "vcs_owner": "KenwoodFox",
+  "gitea_url": "https://gitea.example.com",
   "Author": "Joe",
   "Institute": "Kitsune Scientific",
   "__prompts__": {
     "repo_name": "CamelCase, repository name.",
-    "github": "Your GitHub Username",
+    "vcs_platform": "Generate CI for GitHub or Gitea?",
+    "vcs_owner": "GitHub username or Gitea owner/organization.",
+    "gitea_url": "Gitea instance URL (only used when vcs_platform is gitea).",
     "Author": "Your name",
     "Institute": "Institute or class, like 'My Club' or 'CS-113'"
   }

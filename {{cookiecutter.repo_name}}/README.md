@@ -1,6 +1,12 @@
-[![Docs](https://github.com/{{cookiecutter.github}}/{{cookiecutter.repo_name}}/actions/workflows/docs_workflow.yml/badge.svg)](https://github.com/{{cookiecutter.github}}/{{cookiecutter.repo_name}}/actions/workflows/docs_workflow.yml)
-[![Hardware](https://github.com/{{cookiecutter.github}}/{{cookiecutter.repo_name}}/actions/workflows/hardware_workflow.yml/badge.svg)](https://github.com/{{cookiecutter.github}}/{{cookiecutter.repo_name}}/actions/workflows/hardware_workflow.yml)
-[![Firmware](https://github.com/{{cookiecutter.github}}/{{cookiecutter.repo_name}}/actions/workflows/firmware_workflow.yml/badge.svg)](https://github.com/{{cookiecutter.github}}/{{cookiecutter.repo_name}}/actions/workflows/firmware_workflow.yml)
+{%- if cookiecutter.vcs_platform == "github" -%}
+[![Docs](https://github.com/{{cookiecutter.vcs_owner}}/{{cookiecutter.repo_name}}/actions/workflows/docs_workflow.yml/badge.svg)](https://github.com/{{cookiecutter.vcs_owner}}/{{cookiecutter.repo_name}}/actions/workflows/docs_workflow.yml)
+[![Hardware](https://github.com/{{cookiecutter.vcs_owner}}/{{cookiecutter.repo_name}}/actions/workflows/hardware_workflow.yml/badge.svg)](https://github.com/{{cookiecutter.vcs_owner}}/{{cookiecutter.repo_name}}/actions/workflows/hardware_workflow.yml)
+[![Firmware](https://github.com/{{cookiecutter.vcs_owner}}/{{cookiecutter.repo_name}}/actions/workflows/firmware_workflow.yml/badge.svg)](https://github.com/{{cookiecutter.vcs_owner}}/{{cookiecutter.repo_name}}/actions/workflows/firmware_workflow.yml)
+{%- else -%}
+[![Docs]({{cookiecutter.gitea_url}}/{{cookiecutter.vcs_owner}}/{{cookiecutter.repo_name}}/actions/workflows/docs_workflow.yml/badge.svg)]({{cookiecutter.gitea_url}}/{{cookiecutter.vcs_owner}}/{{cookiecutter.repo_name}}/actions/workflows/docs_workflow.yml)
+[![Hardware]({{cookiecutter.gitea_url}}/{{cookiecutter.vcs_owner}}/{{cookiecutter.repo_name}}/actions/workflows/hardware_workflow.yml/badge.svg)]({{cookiecutter.gitea_url}}/{{cookiecutter.vcs_owner}}/{{cookiecutter.repo_name}}/actions/workflows/hardware_workflow.yml)
+[![Firmware]({{cookiecutter.gitea_url}}/{{cookiecutter.vcs_owner}}/{{cookiecutter.repo_name}}/actions/workflows/firmware_workflow.yml/badge.svg)]({{cookiecutter.gitea_url}}/{{cookiecutter.vcs_owner}}/{{cookiecutter.repo_name}}/actions/workflows/firmware_workflow.yml)
+{%- endif %}
 
 
 # {{cookiecutter.repo_name}}
@@ -9,14 +15,22 @@
 
 This repo contains all the firmware and hardware for the {{cookiecutter.repo_name}}.
 
-If you're looking for the latest docs/builds, see our [Releases Page](https://github.com/{{cookiecutter.github}}/{{cookiecutter.repo_name}}/releases).
+{%- if cookiecutter.vcs_platform == "github" %}
+If you're looking for the latest docs/builds, see our [Releases Page](https://github.com/{{cookiecutter.vcs_owner}}/{{cookiecutter.repo_name}}/releases).
+{%- else %}
+If you're looking for the latest docs/builds, see our [Releases Page]({{cookiecutter.gitea_url}}/{{cookiecutter.vcs_owner}}/{{cookiecutter.repo_name}}/releases).
+{%- endif %}
 
 # Getting Started
 
 First, clone this repo (and optionally checkout a branch)
 
 ```shell
-git clone https://github.com/{{cookiecutter.github}}/{{cookiecutter.repo_name}}.git
+{%- if cookiecutter.vcs_platform == "github" %}
+git clone https://github.com/{{cookiecutter.vcs_owner}}/{{cookiecutter.repo_name}}.git
+{%- else %}
+git clone {{cookiecutter.gitea_url}}/{{cookiecutter.vcs_owner}}/{{cookiecutter.repo_name}}.git
+{%- endif %}
 cd {{cookiecutter.repo_name}}
 ```
 

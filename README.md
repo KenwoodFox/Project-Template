@@ -14,6 +14,8 @@ Its as easy as
 cookiecutter https://github.com/KenwoodFox/Project-Template
 ```
 
+You will be asked whether to use **GitHub Actions** (`.github/workflows`) or **Gitea Actions** (`.gitea/workflows`); only the matching CI folder is included in the generated project.
+
 If you dont have cookie-cutter, install it from [here](https://cookiecutter.readthedocs.io/en/stable/installation.html)!
 
 

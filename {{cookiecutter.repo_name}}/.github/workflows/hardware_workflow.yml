@@ -28,7 +28,7 @@ jobs:
           fetch-depth: 0
           submodules: true
 
-      - uses: INTI-CMNB/KiBot@v2_k9
+      - uses: INTI-CMNB/KiBot@v2_k10
         with:
           # Config file
           config: Hardware/config.kibot.yaml
@@ -60,7 +60,7 @@ jobs:
           name: Board-Hardware
 
       - name: Upload KiCAD Artifacts
-        uses: edunad/actions-image@v2.0.3
+        uses: edunad/actions-image@v2.0.0
         with:
           path: "*-3D_top.png"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
