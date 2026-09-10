@@ -3,14 +3,13 @@ version.h
 _build
 
 # Binaries
-*.FCStd1
-*.stl
 *.pdf
 *.zip
 *.*~
 
 # CAD Artifacts
 *.stl
+*.3dmf
 
 # Doc artifacts
 _*/
@@ -25,6 +24,8 @@ _*/
 *.kicad_prl
 *.sch-bak
 *~
+*.FCStd1
+*.FCBak
 _autosave-*
 *.tmp
 *-save.pro
