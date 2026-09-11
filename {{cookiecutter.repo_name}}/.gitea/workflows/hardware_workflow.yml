@@ -139,13 +139,11 @@ jobs:
       - run: cp JLCPCB/*.zip _staging/Board-$(git rev-parse --short HEAD)-JLCPCB.zip
 
       - name: Upload artifacts to release
-        uses: svenstaro/upload-release-action@v2
+        uses: akkuman/gitea-release-action@v1
         with:
-          repo_token: ${{ secrets.GITEA_TOKEN }}
-          file: "_staging/*"
-          tag: ${{ github.ref }}
-          overwrite: true
+          token: ${{ secrets.GITEA_TOKEN }}
+          files: _staging/*
+          tag_name: ${{ github.ref_name }}
           prerelease: true
           #{% endraw %}
           body: "{{cookiecutter.Institute}}, Automated with Gitea CI/CD."
-          file_glob: true
